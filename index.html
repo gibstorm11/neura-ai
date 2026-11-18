@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEURA AI</title>
+<style>
+body {
+    margin: 0;
+    background: #080d19;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+header {
+    text-align: center;
+    padding: 50px 20px;
+    background: linear-gradient(135deg,#101e3b,#172d52);
+}
+h1 {
+    font-size: 48px;
+    color: #55c8ff;
+}
+header p {color: #b5cce8;}
+.search {
+    display: block;
+    margin: 25px auto;
+    padding: 15px;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 12px;
+    border: 1px solid #55c8ff;
+    background: #101a2c;
+    color: white;
+}
+main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 20px;
+    padding: 30px;
+}
+.card {
+    background: #111d31;
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #263c5c;
+    transition: 0.2s;
+}
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #55c8ff;
+}
+.card h2 {color: #55c8ff;}
+.card a {
+    display: inline-block;
+    background: #168dcc;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #7189a8;
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1>NEURA AI</h1>
+<p>Discover the future of artificial intelligence</p>
+<input class="search" id="search"
+placeholder="Zoek een AI-assistent..."
+oninput="filterAI()">
+</header>
+
+<main id="list"></main>
+
+<footer>NEURA AI | Your AI Universe</footer>
+
+<script>
+const assistants = [
+["ChatGPT","https://chatgpt.com"],
+["Google Gemini","https://gemini.google.com"],
+["Microsoft Copilot","https://copilot.microsoft.com"],
+["Claude","https://claude.ai"],
+["Pi AI","https://pi.ai"],
+["Perplexity","https://perplexity.ai"],
+["DeepSeek","https://chat.deepseek.com"],
+["Grok","https://grok.com"],
+["Mistral AI","https://chat.mistral.ai"],
+["Character AI","https://character.ai"],
+["Poe","https://poe.com"],
+["Meta AI","https://www.meta.ai"],
+["Phind","https://www.phind.com"],
+["You.com","https://you.com"],
+["HuggingChat","https://huggingface.co/chat"],
+["Blackbox AI","https://www.blackbox.ai"],
+["Replit AI","https://replit.com"],
+["Suno AI","https://suno.com"],
+["ElevenLabs","https://elevenlabs.io"],
+["Leonardo AI","https://leonardo.ai"],
+["Canva AI","https://canva.com"],
+["Gamma","https://gamma.app"],
+["Runway","https://runwayml.com"],
+["Kimi AI","https://kimi.com"]
+];
+
+function showAI(items) {
+document.getElementById("list").innerHTML =
+items.map(ai => `
+<div class="card">
+<h2>${ai[0]}</h2>
+<p>Ontdek ${ai[0]} en wat deze AI kan.</p>
+<a href="${ai[1]}" target="_blank">Open AI →</a>
+</div>
+`).join("");
+}
+
+function filterAI() {
+const q = document.getElementById("search").value.toLowerCase();
+showAI(assistants.filter(ai => ai[0].toLowerCase().includes(q)));
+}
+
+showAI(assistants);
+</script>
+
+</body>
+</html>
